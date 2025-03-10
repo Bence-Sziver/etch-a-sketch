@@ -11,7 +11,6 @@ container.addEventListener("mouseover", event => {
   if (isColored) {
     const randomColor = `rgb(${genRandomNumber()}, ${genRandomNumber()}, ${genRandomNumber()})`;
     event.target.style.backgroundColor = randomColor;
-    randBtn.style.backgroundColor = "rgb(227, 145, 130)";
   } else {
     event.target.style.backgroundColor = "rgb(0, 0, 0)";
   }
