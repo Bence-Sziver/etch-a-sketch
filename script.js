@@ -2,6 +2,10 @@ const container = document.querySelector("#container");
 
 createGrid();
 
+container.addEventListener("mouseover", event => {
+  event.target.classList.add("hover");
+});
+
 function createGrid() {
   for (let i = 0; i < 16; i++) {
     const row = document.createElement("div");

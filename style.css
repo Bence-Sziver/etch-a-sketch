@@ -28,3 +28,7 @@ html {
   background-color: aquamarine;
   flex: 1;
 }
+
+.hover {
+  background-color: black;
+}
