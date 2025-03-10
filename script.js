@@ -1,18 +1,33 @@
 const container = document.querySelector("#container");
-const btn = document.querySelector("button");
+const genBtn = document.querySelector("#genButton");
+const randBtn = document.querySelector("#randButton");
 let rows = createGrid();
+let isColored = false;
 
 container.addEventListener("mouseover", event => {
-  event.target.classList.add("hover");
+  if (isColored) {
+    const randomColor = `rgb(${genRandomNumber()}, ${genRandomNumber()}, ${genRandomNumber()})`;
+    event.target.style.backgroundColor = randomColor;
+    randBtn.style.backgroundColor = "rgb(227, 145, 130)";
+  } else {
+    event.target.style.backgroundColor = "rgb(0, 0, 0)";
+  }
 });
 
-btn.addEventListener("click", () => {
+genBtn.addEventListener("click", () => {
   let size = +prompt("Add a size for the board (min: 1, max 100): ", "16");
   if (!size) return alert("Wrong input");
   if (size > 100) size = 100;
   if (size < 1) size = 1;
   removeGrid(rows);
   rows = createGrid(size);
+});
+
+randBtn.addEventListener("click", () => {
+  isColored = !isColored;
+  randBtn.style.backgroundColor = (isColored) ?
+     "rgb(227, 145, 130)" :
+     "rgb(212, 215, 214)";
 });
 
 function createGrid(size = 16) {
@@ -33,4 +48,8 @@ function removeGrid(nodeList) {
   nodeList.forEach(node => {
     container.removeChild(node);
   });
+}
+
+function genRandomNumber() {
+  return Math.floor(Math.random() * 255);
 }
