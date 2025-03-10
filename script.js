@@ -1,8 +1,11 @@
 const container = document.querySelector("#container");
 const genBtn = document.querySelector("#genButton");
 const randBtn = document.querySelector("#randButton");
+const darkenBtn = document.querySelector("#darkenButton");
 let rows = createGrid();
 let isColored = false;
+let isDarkening = false;
+let opacity = 0.0;
 
 container.addEventListener("mouseover", event => {
   if (isColored) {
@@ -12,6 +15,12 @@ container.addEventListener("mouseover", event => {
   } else {
     event.target.style.backgroundColor = "rgb(0, 0, 0)";
   }
+  if (isDarkening) {
+    event.target.style.opacity = opacity;
+  } else {
+    event.target.style.opacity = 1.0;
+  }
+  opacity += 0.1;
 });
 
 genBtn.addEventListener("click", () => {
@@ -28,6 +37,17 @@ randBtn.addEventListener("click", () => {
   randBtn.style.backgroundColor = (isColored) ?
      "rgb(227, 145, 130)" :
      "rgb(212, 215, 214)";
+});
+
+darkenBtn.addEventListener("click", () => {
+  isDarkening = !isDarkening;
+  if (isDarkening) opacity = 0.0;
+  darkenBtn.style.backgroundColor = (isDarkening) ?
+    "rgb(52, 49, 49)" :
+    "rgb(212, 215, 214)";
+  darkenBtn.style.color = (isDarkening) ?
+    "rgb(255, 255, 255)" :
+    "rgb(0, 0, 0)";
 });
 
 function createGrid(size = 16) {
