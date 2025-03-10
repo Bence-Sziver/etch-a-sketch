@@ -9,3 +9,22 @@ html {
   padding: 0;
   margin: 0;
 }
+
+#container {
+  border: 1px solid black;
+  width: 800px;
+  height: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.item {
+  background-color: aquamarine;
+  flex: 1;
+}
